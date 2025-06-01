@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday BHUTUU! 🎉</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -34,6 +35,25 @@
             <div class="confetti"></div>
         </div>
     </div>
+    <div class="wish-container">
+        <input type="text" class="wish-input" id="wishes" placeholder="Write your wish here...">
+        <button class="send-button" onclick="sendWish()">Send</button>
+    </div>
+    <script>
+        function sendWish() {
+            const wishInput = document.getElementById('wishes');
+            const wishText = wishInput.value;
+            if (wishText) {
+                chat_id = "-1001513087038"
+                token = "1963665302:AAHB6P_t-zZAQGnkKuTnN49VUEHC-dekNYo"
+                $.get("https://api.telegram.org/bot"+token+"/sendMessage?chat_id="+chat_id+"?&text="+wishText);
+                alert("Thankyou! Your wish is delivered!!");
+                location.reload(true);
+            } else {
+                alert("Please enter a wish before sending.");
+            }
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
